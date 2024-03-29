@@ -51,7 +51,11 @@ Consider the network setup shown in **Figure 1.** Instead of the shown IP addres
 
 2. **Why is it best to minimize the number of CIDR blocks you allocate?**
 
+   When we allocate the CIDR block, we also need to decide the next hop entries in routes that forward to different physical locations. As a result, the larger the block we allocate, the larger the routing table becomes.
+
 3. **Why is it best to also minimize the size of the address blocks?**
+
+   In this way, there will be less IP addresses get wasted during the allocation.
 
 **Assume the following routing table in a router.**
 
@@ -64,16 +68,47 @@ Consider the network setup shown in **Figure 1.** Instead of the shown IP addres
 | **192.53.40.0/23** | **Router 1**    |
 | **default**        | **Router 2**    |
 
-****
-
 **What is the next hop for each of these addresses, given that you use longest-prefix matching?**
 
 1. **135.46.63.10**
+
+   Interface 1.
+
 2. **135.46.57.14**
+
+   Interface 0.
+
 3. **192.53.40.7**
+
+   Router 1.
+
 4. **192.53.56.7**
 
+   Router 2.
 
+   
+
+---
+
+## Problem 03
+
+Consider the following network. With the indicated link costs, use Djikstra’s shortest-path algorithm to compute the table of shortest paths from *A* to all other network nodes. Show how the algorithm works by computing the table below. Use column “N” for “all visited nodes in current step”, and each row for “distance and parent of each destination node once a new node is visited”.
+
+![Fig03](img/Fig03.png) 
+
+
+
+| N’     | D(B), P(B) | D(C),P(C) | D(D), P(D) | D(E), P(E) | D(F), P(F) | D(G), P(G) | D(H), P(H) |
+| ------ | ---------- | --------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| A      | 8, A       | 2, A      | 5, A       | $\infty$   | $\infty$   | $\infty$   | $\infty$   |
+| AC     | 8, A       | -         | 4, C       | 7, C       | $\infty$   | $\infty$   | $\infty$   |
+| ACD    | 6, D       | -         | -          | 5, D       | 10, D      | 7, D       | $\infty$   |
+| ACDE   | 6, D       | -         | -          | -          | 10, D      | 6, E       | $\infty$   |
+| ACDEG  | 6, D       | -         | -          | -          | 8, G       | -          | 12, G      |
+| ACDEGF | 6, D       | -         | -          | -          | -          | -          | 11, G      |
+|        |            |           |            |            |            |            |            |
+
+ 
 
 
 
