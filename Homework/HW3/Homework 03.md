@@ -98,15 +98,15 @@ Consider the following network. With the indicated link costs, use Djikstra’s 
 
 
 
-| N’     | D(B), P(B) | D(C),P(C) | D(D), P(D) | D(E), P(E) | D(F), P(F) | D(G), P(G) | D(H), P(H) |
-| ------ | ---------- | --------- | ---------- | ---------- | ---------- | ---------- | ---------- |
-| A      | 8, A       | 2, A      | 5, A       | $\infty$   | $\infty$   | $\infty$   | $\infty$   |
-| AC     | 8, A       | -         | 4, C       | 7, C       | $\infty$   | $\infty$   | $\infty$   |
-| ACD    | 6, D       | -         | -          | 5, D       | 10, D      | 7, D       | $\infty$   |
-| ACDE   | 6, D       | -         | -          | -          | 10, D      | 6, E       | $\infty$   |
-| ACDEG  | 6, D       | -         | -          | -          | 8, G       | -          | 12, G      |
-| ACDEGF | 6, D       | -         | -          | -          | -          | -          | 11, G      |
-|        |            |           |            |            |            |            |            |
+| N’      | D(B), P(B) | D(C),P(C) | D(D), P(D) | D(E), P(E) | D(F), P(F) | D(G), P(G) | D(H), P(H) |
+| ------- | ---------- | --------- | ---------- | ---------- | ---------- | ---------- | ---------- |
+| A       | 8, A       | 2, A      | 5, A       | $\infty$   | $\infty$   | $\infty$   | $\infty$   |
+| AC      | 8, A       | -         | 4, C       | 7, C       | $\infty$   | $\infty$   | $\infty$   |
+| ACD     | 6, D       | -         | -          | 5, D       | 10, D      | 7, D       | $\infty$   |
+| ACDE    | 6, D       | -         | -          | -          | 10, D      | 6, E       | $\infty$   |
+| ACDEG   | 6, D       | -         | -          | -          | 8, G       | -          | 12, G      |
+| ACDEGB  | -          | -         | -          | -          | 8, G       | -          | 12, G      |
+| ACDEGBF | -          | -         | -          | -          | -          | -          | 11, G      |
 
  
 
