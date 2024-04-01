@@ -1,5 +1,10 @@
 # Homework 03
 
+```bash
+Name: Noctis Yamazaki Zhang
+SPIRE ID: 34076138
+```
+
 ## Problem 01:
 
 Consider the network setup shown in **Figure 1.** Instead of the shown IP address the ISP instead assigns the router the address 129.109.112.235 and that the network address of the home network is 192.168.1/24.
@@ -92,7 +97,7 @@ Consider the network setup shown in **Figure 1.** Instead of the shown IP addres
 
 ## Problem 03
 
-Consider the following network. With the indicated link costs, use Djikstra’s shortest-path algorithm to compute the table of shortest paths from *A* to all other network nodes. Show how the algorithm works by computing the table below. Use column “N” for “all visited nodes in current step”, and each row for “distance and parent of each destination node once a new node is visited”.
+**Consider the following network. With the indicated link costs, use Djikstra’s shortest-path algorithm to compute the table of shortest paths from *A* to all other network nodes. Show how the algorithm works by computing the table below. Use column “N” for “all visited nodes in current step”, and each row for “distance and parent of each destination node once a new node is visited”.**
 
 ![Fig03](img/Fig03.png) 
 
@@ -108,7 +113,63 @@ Consider the following network. With the indicated link costs, use Djikstra’s 
 | ACDEGB  | -          | -         | -          | -          | 8, G       | -          | 12, G      |
 | ACDEGBF | -          | -         | -          | -          | -          | -          | 11, G      |
 
- 
+---
 
+## Problem 04
 
+**Consider the network shown below, and assume that each node initially knows the cost to each of its neighbors. Consider the distance-vector algorithm and show the distance table entries at node *z*. (Please show the intermediate steps until convergence is reached!)**
 
+![Fig04](./img/Fig04.png)
+
+![Screenshot from 2024-03-28 22-53-19](./img/Screenshot%20from%202024-03-28%2022-53-19.png)
+
+Step a
+
+|      | u        | v        | x        | y        | z        |
+| ---- | -------- | -------- | -------- | -------- | -------- |
+| v    | $\infty$ | $\infty$ | $\infty$ | $\infty$ | $\infty$ |
+| x    | $\infty$ | $\infty$ | $\infty$ | $\infty$ | $\infty$ |
+| z    | $\infty$ | 6        | 2        | $\infty$ | 0        |
+
+Step b
+
+|      | u        | v    | x    | y        | z    |
+| ---- | -------- | ---- | ---- | -------- | ---- |
+| v    | 1        | 0    | 3    | $\infty$ | 6    |
+| x    | $\infty$ | 3    | 0    | 3        | 2    |
+| z    | 7        | 5    | 2    | 5        | 0    |
+
+Step c
+
+|      | u    | v    | x    | y    | z    |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| v    | 1    | 0    | 3    | 3    | 5    |
+| x    | 4    | 3    | 0    | 3    | 2    |
+| z    | 6    | 5    | 2    | 5    | 0    |
+
+Then, we are finished at Step c.
+
+---
+
+## Problem 05
+
+![Fig05](./img/Fig05.png)
+
+**Consider the figure above for the following problem.**
+
+1. **In this case, the two networks A and B are connected through network C to the rest of the Internet. What network address or addresses for A and B are advertised by the gateway router (that connects C to the Internet)? Specify network address and subnet mask?**
+
+   In this case, it is advertising `128.119.0.0/16` with a subnet mask `255.255.0.0`.
+
+2. **Assume that the router that connects C to both A and B has interface 1 connected to A and interface 2 connected to B. For these two networks, specify the forwarding table entries in the router of network C.**
+
+   The forwarding table in C would be:
+
+   | Destination      | Next Hop    |
+   | ---------------- | ----------- |
+   | 128.119.0.0/17   | Interface 1 |
+   | 128.119.128.0/17 | Interface 2 |
+
+3. **Now assume that a host somewhere in the Internet (the host is not located in networks A, B, and C) sends a packet to *i)* a host in network A and *ii)* to a host in network B. Explain how the router (from problem b.) in network C determines which interface to send each of these packets.**
+
+   We can use the longest prefix matching to determine whether the destination of the packet is in network A or in network B.
